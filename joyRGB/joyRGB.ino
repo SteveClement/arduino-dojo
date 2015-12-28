@@ -91,13 +91,19 @@ void loop() {
   //if ( (millis() - redLEDtimer) >= redLEDinterval) 
   //   toggleRedLED();
 
-  if (UD > 1000) {
+  if (UD > 1000 || UD < 50) {
     Serial.println("U/D Limit reached toggling RedLED");
     toggleRedLED();
+  } else {
+    if (digitalRead(ledPin0) == HIGH)
+      digitalWrite(ledPin0, LOW);
   }
 
-  if (LR > 1000) {
+  if (LR > 1000 || LR < 30) {
     Serial.println("L/R Limit reached toggling GreenLED");
     toggleGreenLED();
+  } else {
+    if (digitalRead(ledPin1) == HIGH)
+      digitalWrite(ledPin1, LOW);
   }
 }

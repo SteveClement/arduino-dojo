@@ -88,6 +88,11 @@ I2C_UNOs.jpg
 
 ### TWI
 
+## Variables
+
+To force a variable cast on a number just append the short form.
+Like to make *1000* an unsigned long, write it as *1000UL*
+
 ## Constants
 
 Micro-controllers like the Arduino UNO have a maximal program storage space e.g 32,256 for the UNO
@@ -106,3 +111,6 @@ When programming an Arduino pay attention to the Variable scope. As a rule of th
 As always, do not re-use variable names in different scopes, it will confuse you. And if it doesn't confuse you it might confuse the next person to read your code.
 
 ## Functions
+
+## case switch
+
