@@ -45,12 +45,11 @@ void setup() {
 
   pixel.begin();
   pixel.show();
-  
 }
 
+// Toggles the LED pin and makes a note when it got toggled
 void toggleGreenLED ()
   {
-      Serial.println("Toggle Green");
    if (digitalRead(ledPin1) == LOW)
       digitalWrite(ledPin1, HIGH);
    else
@@ -62,8 +61,6 @@ void toggleGreenLED ()
 
 void toggleRedLED ()
   {
-      Serial.println("Toggle Red");
-
    if (digitalRead(ledPin0) == LOW)
       digitalWrite(ledPin0, HIGH);
    else
@@ -94,15 +91,6 @@ void loop() {
   if ( (millis() - redLEDtimer) >= redLEDinterval) 
     toggleRedLED ();
 
-
-  //Serial.println("LED On");
-  digitalWrite(ledPin0, HIGH);
-  digitalWrite(ledPin1, HIGH);
-  //delay(UD);
-  //Serial.println("LED Off");
-  digitalWrite(ledPin0, LOW);
-  digitalWrite(ledPin1, LOW);
-  //delay(UD);
   if (UD > 1000) {
     Serial.print("UpDown   : ");
     Serial.println(UD);
