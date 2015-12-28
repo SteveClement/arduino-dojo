@@ -3,22 +3,34 @@
 #include <Wire.h>
 #include <Adafruit_NeoPixel.h>
 
+// Pin where first neopixel is connected
 #define PIN 6
+
+// Pins where Left/Right and Up/Down are connected. Essentially they are 10k potentiometers who are mid-value when idle
+#define LRPin A0
+#define UDPin A1
+
+// Pins where the LEDs are connected
+#define ledPin0 12
+#define ledPin1 11
 
 // Instantiate pixel (1 pixel, on pin 6)
 Adafruit_NeoPixel pixel = Adafruit_NeoPixel(1, PIN, NEO_GRB + NEO_KHZ800);
-
-// Pins where Left/Right and Up/Down are connected. Essentially they are 10k potentiometers who are mid-value when idle
-int LRPin = A0;
-int UDPin = A1;
 
 // Variables to store the value of the potentiometers
 int LR = 0;
 int UD = 0;
 
-// Pins where the LEDs are connected
-int ledPin0 = 12;
-int ledPin1 = 11;
+// Time periods of blinks in milliseconds (1000 to a second).
+const unsigned long greenLEDinterval = 500;
+const unsigned long redLEDinterval = 1000;
+
+// Variable holding the timer value so far. One for each "Timer"
+unsigned long greenLEDtimer = millis();
+unsigned long redLEDtimer = millis();
+
+// unsigned long for millis() it gets huge, fast
+unsigned long currentMillis = millis();
 
 void setup() {
   // put your setup code here, it will be run once
@@ -38,9 +50,6 @@ void setup() {
 
 void loop() {
   // put your main code here, it will be run repeatedly
-
-  // unsigned long for millis() it gets huge, fast
-  unsigned long currentMillis = millis();
 
   // Read the analog values of Left/Right
   LR = analogRead(LRPin);

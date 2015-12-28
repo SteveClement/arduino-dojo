@@ -88,3 +88,21 @@ I2C_UNOs.jpg
 
 ### TWI
 
+## Constants
+
+Micro-controllers like the Arduino UNO have a maximal program storage space e.g 32,256 for the UNO
+Switching an integer to a constant integer saves us 4 bytes. You should get into the habit of making PIN variables or other variables that do not change in your program constants or define them as such.
+
+Use either const byte, const int or #define to achieve this goal.
+
+Personally I find it awkward reading *const int myPin = A0;* A0 Does not really look like an integer.
+#defines are perhaps a better choice for readability and general cleanliness.
+
+##### Research difference define const
+
+## Scope
+
+When programming an Arduino pay attention to the Variable scope. As a rule of thumb try to declare your variables outside of any functions. This makes them Global. If no other good reason exists try to stick to this.
+As always, do not re-use variable names in different scopes, it will confuse you. And if it doesn't confuse you it might confuse the next person to read your code.
+
+## Functions
