@@ -84,20 +84,20 @@ void loop() {
   pixel.show();
 
   // Handling the blink of one LED.
-  if ( (millis() - greenLEDtimer) >= greenLEDinterval)
-     toggleGreenLED ();
+  //if ( (millis() - greenLEDtimer) >= greenLEDinterval)
+  //   toggleGreenLED();
 
   // The other LED is controlled the same way. Repeat for more LEDs
-  if ( (millis() - redLEDtimer) >= redLEDinterval) 
-    toggleRedLED ();
+  //if ( (millis() - redLEDtimer) >= redLEDinterval) 
+  //   toggleRedLED();
 
   if (UD > 1000) {
-    Serial.print("UpDown   : ");
-    Serial.println(UD);
+    Serial.println("U/D Limit reached toggling RedLED");
+    toggleRedLED();
   }
 
   if (LR > 1000) {
-    Serial.print("LeftRight: ");
-    Serial.println(LR);
+    Serial.println("L/R Limit reached toggling GreenLED");
+    toggleGreenLED();
   }
 }
