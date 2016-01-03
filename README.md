@@ -37,6 +37,14 @@ Here is a quick table
 
 [Some details in the Wire Arduino Library](https://www.arduino.cc/en/Reference/Wire)
 
+[Nice write-up on the I²C Bus](http://blog.nearfuturelaboratory.com/2007/01/11/arduino-and-twi/)
+
+### UART
+
+[WikiPedia](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter)
+
+"A universal asynchronous receiver/transmitter, abbreviated UART /ˈjuːɑrt/, is a computer hardware device that translates data between parallel and serial forms. UARTs are commonly used in conjunction with communication standards such as TIA (formerly EIA) RS-232, RS-422 or RS-485. The universal designation indicates that the data format and transmission speeds are configurable. The electric signaling levels and methods (such as differential signaling etc.) are handled by a driver circuit external to the UART."
+
 ### Serial Peripheral Interface
 
 [Src](https://www.arduino.cc/en/Reference/SPI)
@@ -203,3 +211,51 @@ The Adafruit Learning platform has a nice 3 parter
 * [Multi-Tasking the Arduino Part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1?view=all)
 * [Multi-Tasking the Arduino Part 2](https://learn.adafruit.com/multi-tasking-the-arduino-part-2?view=all)
 * [Multi-Tasking the Arduino Part 3](https://learn.adafruit.com/multi-tasking-the-arduino-part-3?view=all)
+
+# Pull-up Resistors
+
+[Wikipedia](https://en.wikipedia.org/wiki/Pull-up_resistor)
+
+[Sparkfun what is a pull-up resistor](https://learn.sparkfun.com/tutorials/pull-up-resistors/what-is-a-pull-up-resistor)
+
+[Sparkfun Tutorial](https://learn.sparkfun.com/tutorials/pull-up-resistors)
+
+## What is a Pull-up Resistor
+
+Let’s say you have an [MCU (Microcontroller)](https://en.wikipedia.org/wiki/Microcontroller) with one pin configured as an input. If there is nothing connected to the pin and your program reads the state of the pin, will it be high (pulled to VCC) or low (pulled to ground)? It is difficult to tell. This phenomena is referred to as floating. To prevent this unknown state, a pull-up or pull-down resistor will ensure that the pin is in either a high or low state, while also using a low amount of current.
+
+For simplicity, we will focus on pull-ups since they are more common than pull-downs. They operate using the same concepts, except the pull-up resistor is connected to the high voltage (this is usually 3.3V or 5V and is often refereed to as VCC) and the pull-down resistor is connected to ground.
+
+Pull-ups are often used with buttons and switches.
+
+## Arduino Digital Pins and Pull-up
+
+[Digital Pins on Arduino.cc](https://www.arduino.cc/en/Tutorial/DigitalPins)
+
+[Input Pullup Serial Tutorial on Arduino.cc](https://www.arduino.cc/en/Tutorial/InputPullupSerial)
+
+### Pullup Resistors with pins configured as INPUT
+
+"Often it is useful to steer an input pin to a known state if no input is present. This can be done by adding a pullup resistor (to +5V), or a pulldown resistor (resistor to ground) on the input. A 10K resistor is a good value for a pullup or pulldown resistor."
+
+### Properties of Pins Configured as INPUT_PULLUP
+
+"There are 20K pullup resistors built into the Atmega chip that can be accessed from software. These built-in pullup resistors are accessed by setting the pinMode() as INPUT_PULLUP. This effectively inverts the behavior of the INPUT mode, where HIGH means the sensor is off, and LOW means the sensor is on."
+
+### Digital PIN 13
+
+"**NOTE** Digital pin 13 is harder to use as a digital input than the other digital pins because it has an LED and resistor attached to it that's soldered to the board on most boards. If you enable its internal 20k pull-up resistor, it will hang at around 1.7V instead of the expected 5V because the onboard LED and series resistor pull the voltage level down, meaning it always returns LOW. If you must use pin 13 as a digital input, set its pinMode() to INPUT and use an external pull down resistor."
+
+# Fritzing
+
+Ever wondered how these Images are created:
+
+![Fritzing Example](img/inputPullupButton.png)
+
+It can be done using the great [Fritzing](http://fritzing.org/) Software.
+
+Fritzing is an open-source initiative to support designers, artists, researchers and hobbyists to work creatively with interactive electronics. We are creating a software and website in the spirit of Processing and Arduino, developing a tool that allows users to document their prototypes, share them with others, teach electronics in a classroom, and to create a pcb layout for professional manufacturing.
+
+Make sure to include the [Adafruit Fritzing Library](https://github.com/adafruit/Fritzing-Library) and the [Sparkfun Fritzing Library](https://github.com/sparkfun/Fritzing_Parts)
+
+[Sparkfun](https://sparkfun.com) also has a nice [Tutorial](https://learn.sparkfun.com/tutorials/make-your-own-fritzing-parts) on how to make your own Fritzing parts.
